@@ -1,12 +1,12 @@
-# Carbon Arc Assessment: Technical Design Document
+# Technical Design Document
 
 ## 1. Overview
 
 This project is a lightweight task management application with a FastAPI backend, TypeScript React frontend, and Docker Compose runtime.
 
-The original prompt asked for basic task creation, completion, deletion, statistics, login, and activity logs. The implementation keeps those required behaviors and adds a richer operational task-management layer: task priority, multi-state status, tags, target dates, tag filtering, sorting, activity history, and a table-oriented UI.
+The original prompt asked for basic task creation, completion, deletion, statistics, login, and activity logs. The implementation keeps those required behaviors and adds task priority, multi-state status, tags, target dates, tag filtering, sorting, activity history, and a table-oriented UI.
 
-The design goal is a small take-home that still looks production-shaped: typed API contracts, request validation, centralized auth handling, an isolated in-memory repository, Dockerized local development, and meaningful tests across backend, frontend, contract, concurrency, and browser workflows.
+
 
 ## 2. Goals
 
@@ -18,6 +18,7 @@ The design goal is a small take-home that still looks production-shaped: typed A
   - `target_date`: optional due date
 - Keep `completed` as a derived response field for compatibility with the original prompt.
 - Build a React TypeScript frontend with login, protected routes, paginated task table, task creation, inline editing, filters, sorting, statistics, and task detail views.
+- Typed API contracts, request validation, centralized auth handling, an isolated in-memory repository, Dockerized local development, and meaningful tests across backend, frontend, contract, concurrency, and browser workflows.
 - Require authenticated API requests after login.
 - Package backend and frontend with Docker and run both with `docker-compose up --build`.
 - Include a README with setup instructions, assumptions, tradeoffs, and test commands.
@@ -33,7 +34,7 @@ The design goal is a small take-home that still looks production-shaped: typed A
 - Production deployment configuration.
 - CI pipeline implementation.
 
-These are intentionally excluded to keep the assessment scoped while preserving clear replacement points for future production work.
+These are intentionally excluded to keep the project scoped while preserving clear replacement points for future production work.
 
 ## 4. Technology Choices
 
@@ -517,7 +518,7 @@ The list view is intentionally styled as a dense operational table inspired by p
   - environment: `VITE_API_BASE_URL=http://localhost:3001`
   - depends on healthy backend
 
-Vite dev server in Docker is good for local take-home review and fast iteration. A production deployment would build static assets and serve them from Nginx, a CDN, or a backend static server.
+Vite dev server in Docker is good for local review and fast iteration. A production deployment would build static assets and serve them from Nginx, a CDN, or a backend static server.
 
 ## 11. Testing Plan
 
